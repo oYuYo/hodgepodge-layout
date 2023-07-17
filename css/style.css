@@ -1,0 +1,60 @@
+@charset "utf-8";
+
+body{
+    animation-name: bgchange-a;
+    animation-duration: 2.0s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+button{
+    font-family: 'Noto Serif';
+    font-style: normal;
+    font-size: 24px;
+    color:white;
+    width:100px;
+    background-color: rgb(0, 0, 0);
+    margin:0px 10px 0px 10px;
+    padding: 5px;
+    cursor:pointer;
+}
+
+.container1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+@keyframes bgchange-a{
+    0%   {background:#0165A6;}
+    25%  {background:#0179C0;}
+    50%  {background:#2a9bd8;}
+    75%  {background:#69cfff;}
+    100% {background:#0165A6;}
+}
+
+@keyframes bgchange-b{
+    0%   {background:#000000;}
+    45%  {background:#000000;}
+    50%  {background:#ff0000;}
+    55%  {background:#000000;}
+    100% {background:#000000;}
+}
+
+@keyframes bgchange-c{
+    0%   {background:#9B0619;}
+    50%  {background:#E3425C;}
+    100% {background:#9B0619;}
+}
+
+@keyframes bgchange-d{
+    0%   {background:#240E34;}
+    50%  {background:#EFEFF1;}
+    100% {background:#240E34;}
+}
