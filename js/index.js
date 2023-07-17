@@ -20,6 +20,14 @@ window.addEventListener('load', (event) => {
                     el.style.setProperty('animation-name', 'bgchange-d');
                     el.style.setProperty('animation-duration', '0.5s');
                     break;
+                case 'btnParticle':
+                    let p = document.getElementById('particles-js');
+                    if (p.style.display === 'none'){
+                        p.style.setProperty('display', '')
+                    } else {
+                        p.style.setProperty('display', 'none')
+                    }
+                    break;
                 }
         });
     });
