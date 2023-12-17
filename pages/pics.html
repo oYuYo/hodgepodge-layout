@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Pics</title>
+</head>
+<style>
+body{
+    background-color: black;
+
+}
+.iamges {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+header{
+    height:80px;
+}
+span{
+    color:white;
+}
+</style>
+<body>
+    <header>
+        <nav class="menu">
+            <ul>
+                <li><a href="/index.html"><span>Home</span></a></li>
+                <li><a href="javascript:void(0)"><span>Today Pics</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="video">
+        <video controls disablePictureInPicture controlsList="nodownload" width="800">
+            <source src="https://d2ejbckqk7gk3h.cloudfront.net/pics1.mp4" type="video/mp4" />
+          </video>
+    </div>
+    <div class="iamges">
+        <img width="800px" src="https://d2ejbckqk7gk3h.cloudfront.net/image1.jpg">
+        <img width="800px" src="https://d2ejbckqk7gk3h.cloudfront.net/image2.jpg">
+        <img width="800px" src="https://d2ejbckqk7gk3h.cloudfront.net/image3.jpg">
+    </div>
+</body>
+</html>

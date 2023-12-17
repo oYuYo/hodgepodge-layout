@@ -2,7 +2,6 @@
 html{ 
 	width:100%;
 	height:100%;
-	background:#111;
 }
 
 body{
@@ -27,6 +26,7 @@ button{
     user-select: none;
 }
 
+
 .container1{
     position: absolute;
     top: 50%;
@@ -39,9 +39,14 @@ button{
     align-items: center;
 }
 
+#particles-js{
+    width: 100%;
+    height: 90%;
+}
+
 #btnParticle{
     position: absolute;
-    top: 0%;
+    top: 80px;
     left: 0%;
 }
 
@@ -72,9 +77,3 @@ button{
     50%  {background:#EFEFF1;}
     100% {background:#240E34;}
 }
-
-#particles-js{
-    width: 100%;
-    height: 100%;
-  }
-  
