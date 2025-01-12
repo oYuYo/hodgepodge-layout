@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/f.js" defer></script>
+    <title>気になったもののキャッチアップ</title>
+    <link rel="stylesheet" href="../css/f.css">
+</head>
+<body>
+    <header>
+        <h1>気になったもののキャッチアップ</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html"><span>Home</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <p>
+            <a href="https://levtech.jp/media/article/column/detail_587/">参考:「State of HTML 2024」でキャッチアップ。HTMLの最新トレンドと注目機能</a>
+        </p>
+        <section>
+            <p>capture属性を使用して, フロントカメラの静止画をキャプチャ</p>
+            <label for="frontimage">フロントカメラで静止画撮影：</label>
+            <input type="file" id="frontimage" name="frontimage" accept="image/*" capture="user" />
+        </section>
+        <section>
+            <p>jsからPickerを開く</p>
+            <label for="pet-select">Choose a pet</label>
+            <select name="pets" id="pet-select">
+                <option value="">--Please choose an option</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+                <option value="parrot">Parrot</option>
+                <option value="spider">Sprider</option>
+            </select>
+            <button id="petSelect">ペットを表示</button>
+        </section>
+        <section>
+            <p>Detailsタグのカスタマイズ</p>
+            <details>
+                <summary>Details</summary>
+                Something small enough to escape casual notice.
+            </details>
+            <details>
+                <summary>Details</summary>
+                Something small enough to escape casual notice.
+            </details>
+            <details>
+                <summary>Details</summary>
+                Something small enough to escape casual notice.
+            </details>
+        </section>
+        <section>
+            <p>popover api</p>
+            <div>
+                <button popovertarget="popover">Open Popover</button>
+                <div popover id="popover">ポップオーバー<br>hogehogehogehogehoge<br>fugafugafugafuga
+                    <div>
+                        <input type="color" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <p>Picture-in-Picture API</p>
+            <video id="video" controls="" controlslist="nodownload" width="600">
+                <source src="https://d2ejbckqk7gk3h.cloudfront.net/pics1.mp4" type="video/mp4">
+            </video>
+            <div>
+                <button id="btnPip">Picture-In-Picture</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

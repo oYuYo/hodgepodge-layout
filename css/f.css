@@ -1,0 +1,28 @@
+@charset "utf-8";
+:root{
+	--bd-font-color:#383e45;
+}
+
+html{
+	font-size: 100%;
+}
+
+body{
+	color:var(--bd-font-color);
+	font-size:0.9rem;
+}
+
+section{
+    margin:30px 0 30px 5px;
+
+}
+section > p::before {
+    content:'\01f980';
+}
+details summary::before {
+    content: '✚';
+    margin-right: 10px;
+}
+summary {
+    display: block;
+}
