@@ -26,3 +26,32 @@ details summary::before {
 summary {
     display: block;
 }
+
+#sticky {
+    position: sticky;
+    top: 10px;
+    margin: 33px 0;
+    height: 51px;
+}
+#sticky h3.title{
+    position: static;
+    top: 0;
+    margin: -1px 0 0;
+    padding: 0 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: fit-content;
+    height: 50px;
+    background-color: #eee;
+}
+#sticky h3.border{
+    position: sticky;
+    top: 61px;
+    margin:0;
+    padding: 0 10px;
+    width: fit-content;
+    height: 1px;
+    background-color: black;
+    color: transparent;
+}
