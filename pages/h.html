@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover and Text Animation</title>
+    <link rel="stylesheet" href="../css/h.css">
+</head>
+<body>
+    <header>
+        <h1>Hover and Text Animation</h1>
+        <nav>
+            <ul>
+                <li><a href="../index.html"><span>Home</span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <article>
+            <section>
+                <h3>
+                    <a href="https://ics.media/entry/240801/">参考:HTMLとCSSでつくる！リンクテキストのホバー時アニメーション11選</a>
+                </h3>
+                <div>
+                    <a href="javascript:void(0)" class="hover anim text">LINK TEXT</a>
+                </div>
+                <div style="overflow: hidden;">
+                    <a href="javascript:void(0)" class="hover anim text2">LINK TEXT</a>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="hover anim text3">LINK TEXT</a>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="hover anim text4">LINK TEXT</a>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="hover anim text5">LINK TEXT</a>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="hover anim text6">LINK TEXT</a>
+                </div>
+            </section>
+            <section>
+                <h3>
+                    <a href="https://ics.media/entry/250131/">参考:HTMLとCSSでつくる!　1文字ずつ変化するテキストのアニメーション</a>
+                </h3>
+                <div>
+                    <a href="javascript:void(0)" class="letter-anim">
+                        <!--aria-hidden で読み上げを避け, translate で翻訳避け-->
+                        <span aria-hidden="true" translate="no" class="text-wrap">
+                            <span class="letter" style="--index: 0">S</span>
+                            <span class="letter" style="--index: 1">E</span>
+                            <span class="letter" style="--index: 2">R</span>
+                            <span class="letter" style="--index: 3">V</span>
+                            <span class="letter" style="--index: 4">I</span>
+                            <span class="letter" style="--index: 5">C</span>
+                            <span class="letter" style="--index: 6">E</span>
+                        </span>
+                        <span class="sr-only">SERVICE</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="letter-anim">
+                        <!--aria-hidden で読み上げを避け, translate で翻訳避け-->
+                        <span aria-hidden="true" translate="no" class="text-wrap2">
+                            <span class="letter2" style="--index: 0">S</span>
+                            <span class="letter2" style="--index: 1">E</span>
+                            <span class="letter2" style="--index: 2">R</span>
+                            <span class="letter2" style="--index: 3">V</span>
+                            <span class="letter2" style="--index: 4">I</span>
+                            <span class="letter2" style="--index: 5">C</span>
+                            <span class="letter2" style="--index: 6">E</span>
+                        </span>
+                        <span class="sr-only">SERVICE</span>
+                    </a>
+                </div>
+            </section>
+        </article>
+    </main>
+</body>
+</html>

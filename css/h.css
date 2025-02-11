@@ -1,0 +1,175 @@
+@charset "utf-8";
+
+
+:root{
+	--bd-font-color:#383e45;
+}
+
+html{
+	font-size: 100%;
+}
+
+body{
+	color:var(--bd-font-color);
+	font-size:0.9rem;
+}
+
+a.hover, a.anim{
+    text-decoration: none;
+    font-size: 45px;
+}
+
+section:nth-child(1){
+    .text{
+        color: #000;
+        transition: letter-spacing 0.5s;
+    }
+
+    .text:hover{
+        letter-spacing: 0.5rem;
+    }
+
+    .text2{
+        color: transparent;
+
+        text-shadow: 0 -1.5em 0 #000, 0 0 0 #000;
+        transition: text-shadow 0.4s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    .text2:hover{
+        text-shadow: 0 0 0 #000, 0 1.5em 0 #000;
+    }
+
+    .text3{
+        color: black;
+        display: flex;
+        align-items: center;
+    }
+
+    .text3::before{
+        width: 0;
+        height: 0;
+        content:"";
+        background-color: transparent;
+        border-radius: 50%;
+        transition: 0.3s;
+    }
+
+    .text3:hover::before{
+        background-color: black;
+        width: 0.25em;
+        height: 0.25em;
+        margin-right:24px;
+        background-color: black;
+    }
+
+    .text4{
+        color: #000;
+        background-image: linear-gradient(black, black);
+        background-repeat: no-repeat;
+        background-position: bottom 10px right;
+        background-size: 0 1px;
+        transition: background-size 0.3s;
+    }
+
+    .text4:hover{
+        background-position: bottom 10px left;
+        background-size: 100% 1px;
+    }
+
+    .text5{
+        color: transparent;
+        background: linear-gradient(to right, orange 50%, black 50%) 100%;
+        background-size: 200% 100%;
+        transition: background-position 0.3s;
+        background-clip: text;
+    }
+
+    .text5:hover{
+        background-position: 0 100%;
+    }
+
+    .text6{
+        color:black;
+    }
+
+    .text6:hover{
+        animation: text-blur 0.5s;
+    }
+}
+
+@keyframes text-blur{
+    0%{
+        filter:blur(0);
+    }
+    20%{
+        filter: blur(8px);
+    }
+    50%{
+        filter: blur(5px);
+    }
+    80%{
+        filter: blur(2px);
+    }
+    100%{
+        filter: blur(0);
+    }
+}
+
+section:nth-child(2){
+    a.letter-anim {
+        font-size: 45px;
+        text-decoration: none;
+    }
+
+    .text-wrap{
+        display: flex;
+        gap:8px;
+    }
+    .text-wrap:hover .letter{
+        text-shadow: 0 0 0 black, 0 1.5em 0 black;
+    }
+    .letter{
+        overflow: hidden;
+        color: transparent;
+        text-shadow: 0 -1.5em 0 black, 0 0 0 black;
+        transition: text-shadow 0.2s;
+        transition-delay: calc(var(--index) * 0.05s);
+    }
+    .sr-only {
+        position: absolute;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        border-width: 0;
+        white-space: nowrap;
+      }
+
+      .text-wrap2{
+        color: black;
+        display: flex;
+        gap: 8px;
+      }
+      .text-wrap2:hover .letter2{
+        animation: sway 0.4s calc(0.04s * var(--index));
+      }
+}
+
+@keyframes sway{
+    0%{
+        transform: translateY(0);
+    }
+    25%{
+        transform: translateY(-0.2em);
+    }
+    50%{
+        transform: translateX(0.5em);
+        color:transparent;
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
