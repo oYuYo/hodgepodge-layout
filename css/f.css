@@ -55,3 +55,71 @@ summary {
     background-color: black;
     color: transparent;
 }
+#carousel-section {
+    .scroll-layout {
+        display: grid;
+        grid-template-areas: 
+          "left scroll right"
+          ". markers .";
+        
+        grid-template-areas: 
+          "scroll scroll scroll"
+          "left markers right";
+        
+        grid-template-columns: auto 1fr auto;
+    
+        .carousel {
+          grid-area: scroll;
+        }
+    }
+    .content {
+        display: grid;
+        grid: 25vmin / auto-flow 25vmin;
+        gap: 15px;
+        padding: 0;
+        margin: 0;
+        > li {
+            list-style-type: none;
+            border: 3px solid #c0c5ff;
+        }
+    }
+    .carousel{
+        scroll-behavior: smooth;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        > li {
+            scroll-snap-align: center;
+        }
+    }
+    .carousel {
+        &::scroll-button(*) {
+          inline-size: 48px;
+          aspect-ratio: 1;
+          border-radius: 1e3px;
+          border: 2px solid #999;
+          margin: 5px;
+        }
+        
+        &::scroll-button(*):focus-visible {
+          outline-offset: 5px;
+        }
+        
+        &::scroll-button(*):not(:disabled):is(:hover, :active) {
+          background-color: Canvas;
+        }
+        
+        &::scroll-button(*):not(:disabled):active {
+          scale: 90%;
+        }
+        
+        &::scroll-button(left) {
+          content: "⬅" / "Scroll Left";
+          grid-area: left;
+        }
+        
+        &::scroll-button(right) {
+          content: "⮕" / "Scroll Right";
+          grid-area: right;
+        }
+    }
+}
