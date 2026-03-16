@@ -123,3 +123,43 @@ summary {
         }
     }
 }
+
+#scroll-triggered-animations{
+    .card {
+        padding:2rem;
+        border-radius:16px;
+        background-color: var(--bg);
+        timeline-trigger: --t view();
+        animation-name: card-enter;
+        animation-duration: 0.65s;
+        animation-trigger: --t play-forwards;
+        trigger-scope: --t;
+    }
+    .card h2{
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin: 0 0.5rem 0 0;
+    }
+    .card p{
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 300;
+    }
+    .card-grid{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+}
+@keyframes card-enter{
+    from{
+        opacity: 0;
+        transform: translateY(48px) scale(0.96);
+        filter: blur(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
