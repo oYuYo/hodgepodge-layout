@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            /*color*/
+            --color-white: #ffffff;
+            --color-black: #000000;
+            --color-navy: #3223b3;
+            --color-lightgreen: #c8e6c9;
+
+            --color-surface: #fff;
+            --color-line: #ddd;
+            --color-text: #222;
+            --color-muted: #666;
+            --color-accent: #3223b3;
+            --color-accent-contrast: #ffffff;
+            --color-surface-hover: color-mix(in oklab, var(--color-surface) 95%, var(--color-text) 5%);
+            --color-surface-muted: color-mix(in oklab, var(--color-line) 20%, var(--color-surface));
+            --color-axis-line: color-mix(in oklab, var(--color-text) 25%, var(--color-line));
+
+            /*liner は次で調整可能*/
+            /*Easing Functions Editor: https://animejs.com/easing-editor/spring/default */
+            --spring-default: linear(0, 0.0107, 0.0398, 0.0834, 0.138, 0.2003, 0.2677, 0.3379, 0.4089, 0.4791, 0.5471, 0.612, 0.6731, 0.7297, 0.7815, 0.8283, 0.87, 0.9068, 0.9388, 0.9662, 0.9892, 1.0083, 1.0237, 1.0357, 1.0449, 1.0514, 1.0556, 1.058, 1.0587, 1.0581, 1.0563, 1.0538, 1.0506, 1.0469, 1.043, 1.0388, 1.0347, 1.0306, 1.0266, 1.0228, 1.0192, 1.0159, 1.0128, 1.0101, 1.0076, 1.0055, 1.0036, 1.002, 1.0006, 0.9995, 0.9986, 0.9979, 0.9974, 0.997, 0.9967, 0.9966, 0.9966, 0.9966, 0.9967, 0.9968, 0.997, 0.9972, 0.9975, 0.9977, 0.998, 0.9982, 0.9984, 0.9987, 0.9989, 0.9991, 0.9992, 0.9994, 0.9996, 0.9997, 0.9998, 0.9999, 1, 1, 1.0001, 1.0001, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0002, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1.0001, 1, 1, 1);
+        }
+
+        /*spring animation*/
+        .segmented-button{
+            --selected-anchor: --segment-1;
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            width: fit-content;
+            max-width: 100%;
+            padding: 8px;
+            border: 1px solid var(--color-line);
+            border-radius: 999px;
+
+            .segment{
+                position: relative;
+                z-index: 1;
+                display: inline flex;
+                align-items: center;
+                min-height: 48px;
+                border-radius: 999px;
+                cursor: pointer;
+                transition: all 0.2s;
+
+                /*hoverできる環境(PC)だけ有効にする*/
+                @media (any-hover: hover) {
+                    &:hover {
+                        background: var(--color-surface-muted);
+                    }
+                }
+            }
+            .segment-indicator{
+                position: absolute;
+                position-anchor: var(--selected-anchor);
+                /*指定したアンカーの位置に合わせる*/
+                top: anchor(top);
+                left: anchor(left);
+                width: anchor-size(width);
+                height: anchor-size(height);
+                background: var(--color-accent);
+                border-radius: 999px;
+                pointer-events: none;
+                transition: top 1s var(--spring-default), left 1s var(--spring-default), width 1s var(--spring-default), height 1s var(--spring-default);
+
+            }
+
+            .segment-input:checked + .segment {
+                color: var(--color-accent-contrast);
+            }
+
+            &:has(#segment-2:checked){
+                --selected-anchor: --segment-2;
+            }
+            &:has(#segment-3:checked){
+                --selected-anchor: --segment-3;
+            }
+            &:has(#segment-4:checked){
+                --selected-anchor: --segment-4;
+            }
+
+            @media (any-hover: hover){
+                .segment-input:checked + .segment{
+                    background: transparent;
+                }
+            }
+        }
+        .segment-input{
+            position: absolute;
+            inline-size: 1px;
+            block-size: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+            clip-path: inset(50%);
+        }
+
+        /*Anchor Animation*/
+        .move-area {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background-color: var(--color-lightgreen);
+        }
+        .anchor-icon {
+            position: absolute;
+            animation: move-anchor 10s ease-in-out infinite alternate;
+            anchor-name: --tooltip-anchor;  /*アンカーの名前を定義*/
+        }
+        .anchor-image {
+            width: 48px;
+            height: 48px;
+        }
+        .tooltip{
+            font-size: 12px;
+            position:absolute;
+            top: calc(anchor(bottom) - 16px);
+            left: calc(anchor(center) - 48px);
+            position-anchor: --tooltip-anchor;  /*ターゲットとなるアンカー*/
+        }
+        .tooltip-text{
+            width: 180px;
+        }
+        @keyframes move-anchor {
+            0% {
+                top: 28px;
+                left: 40px;
+            }
+            25% {
+                top: 28px;
+                left: calc(100% - 88px);
+            }
+            50% {
+                top: calc(100% - 78px);
+                left: calc(100% - 88px);
+            }
+            75% {
+                top: calc(100% - 78px);
+                left: 40px;
+            }
+            100% {
+                top: calc(100% - 96px);
+                left: 40px;
+            }
+        }
+    </style>
+    <title>Spring Animation Page</title>
+</head>
+<body>
+    <h1>Spring Animation Page</h1>
+    <nav>
+        <ul>
+            <li><a href="../index.html"><span>Home</span></a></li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <p>
+                <a href="https://ics.media/entry/260402/">参考:CSSのlinear()でUIが軽快になる!スプリングアニメーション活用術13選</a>
+            </p>
+            <p>スプリングアニメーションの例</p>
+            <div class="segmented-button">
+                <span class="segment-indicator"></span>
+                <input type="radio" class="segment-input" id="segment-1" name="segment">
+                <label class="segment" for="segment-1" style="anchor-name: --segment-1;">All</label>
+                <input type="radio" class="segment-input" id="segment-2" name="segment">
+                <label class="segment" for="segment-2" style="anchor-name: --segment-2;">Unread</label>
+                <input type="radio" class="segment-input" id="segment-3" name="segment">
+                <label class="segment" for="segment-3" style="anchor-name: --segment-3;">Saved</label>
+                <input type="radio" class="segment-input" id="segment-4" name="segment">
+                <label class="segment" for="segment-4" style="anchor-name: --segment-4;">Deleted</label>
+            </div>
+        </section>
+        <section>
+            <p>
+                <a href="https://ics.media/entry/251215/">参考:CSSアンカーポジショニング入門</a>
+            </p>
+            <p>アンカーポジショニングの例</p>
+            <div class="move-area">
+                <div class="anchor-icon">
+                    <svg class="anchor-image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc. -->
+                        <path d="M352 0c0-17.7-14.3-32-32-32S288-17.7 288 0l0 64-96 0c-53 0-96 43-96 96l0 224c0 53 43 96 96 96l256 0c53 0 96-43 96-96l0-224c0-53-43-96-96-96l-96 0 0-64zM160 368c0-13.3 10.7-24 24-24l32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-32 0c-13.3 0-24-10.7-24-24zm120 0c0-13.3 10.7-24 24-24l32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-32 0c-13.3 0-24-10.7-24-24zm120 0c0-13.3 10.7-24 24-24l32 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-32 0c-13.3 0-24-10.7-24-24zM224 176a48 48 0 1 1 0 96 48 48 0 1 1 0-96zm144 48a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zM64 224c0-17.7-14.3-32-32-32S0 206.3 0 224l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96zm544-32c-17.7 0-32 14.3-32 32l0 96c0 17.7 14.3 32 32 32s32-14.3 32-32l0-96c0-17.7-14.3-32-32-32z"/>
+                    </svg>
+                </div>
+                <div class="tooltip">
+                    <p class="tooltip-text">アンカーがどこへ行っても付いてくるアニメ</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
